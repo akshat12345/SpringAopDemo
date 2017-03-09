@@ -56,7 +56,7 @@ public class LoggingAspect {
 
 	    }
 	
-	@Around("execution(* org.springAopDemo.customer.CustomerBo.addCustomerAround(..))")
+	@Around("@annotation(org.springAopDemo.aspect.Loggable)")
 	   public void logAround(ProceedingJoinPoint joinPoint) throws Throwable {
 
 		System.out.println("logAround() is running!");
@@ -70,6 +70,5 @@ public class LoggingAspect {
 		System.out.println("******");
 
 	   }
-
 	
 }
