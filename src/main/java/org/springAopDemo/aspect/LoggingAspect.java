@@ -10,11 +10,15 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class LoggingAspect {
 
-	@Before("execution(* org.springAopDemo.customer.CustomerBo.addCustomer(..))")
+	@Pointcut("execution(* org.springAopDemo.customer.CustomerBo.addCustomer(..))")
+	public void addNewCustomer(){};
+	
+	@Before("addNewCustomer()")
 	public void logBefore(JoinPoint joinPoint) {
 
 		System.out.println("logBefore() is running!");
@@ -22,7 +26,7 @@ public class LoggingAspect {
 		System.out.println("******");
 	}
 	
-	/*@After("execution(* org.springAopDemo.customer.CustomerBo.addCustomer(..)))")
+	/*@After("addNewCustomer()")
 	public void logAfter(JoinPoint joinPoint) {
 
 		System.out.println("logAfter() is running!");
