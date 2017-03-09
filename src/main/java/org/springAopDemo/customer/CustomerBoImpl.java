@@ -1,5 +1,7 @@
 package org.springAopDemo.customer;
 
+import org.springAopDemo.aspect.Loggable;
+
 public class CustomerBoImpl implements CustomerBo {
 
 	public void addCustomer(){
@@ -15,6 +17,7 @@ public class CustomerBoImpl implements CustomerBo {
 		System.out.println("addCustomerThrowException() is running ");
 		throw new Exception("Generic Error");
 	}
+
 	@Loggable
 	public void addCustomerAround(String name){
 		System.out.println("addCustomerAround() is running, args : " + name);
